@@ -1,0 +1,9 @@
+{
+      "ERPId": "DPU4821",
+      "facultyName": "Dr. Pramod Patil",
+      "name": "Patil",
+      "attendance": {
+       in:
+       out
+      }
+    },
