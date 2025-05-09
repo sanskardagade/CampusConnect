@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useUser } from '../context/UserContext';
+// import { useUser } from '../context';
 import { 
   FiBell, 
   FiUsers, 
@@ -26,7 +26,7 @@ import {
 } from 'react-icons/fi';
 
 const PrincipalDashboard = () => {
-  const { user } = useUser();
+  // const { user } = useUser();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [dashboardData, setDashboardData] = useState({
@@ -46,29 +46,34 @@ const PrincipalDashboard = () => {
   });
 
   useEffect(() => {
-    const fetchDashboardData = async () => {
-      try {
-        const token = localStorage.getItem('token');
-        const response = await fetch('http://localhost:5000/api/principal/dashboard', {
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
-        });
-
-        if (!response.ok) {
-          throw new Error('Failed to fetch dashboard data');
-        }
-
-        const data = await response.json();
-        setDashboardData(data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
+   // Simulate fetching dashboard data
+    const fakeDashboardData = {
+      statistics: {
+        totalStudents: Math.floor(Math.random() * 5000) + 1000,
+        totalFaculty: Math.floor(Math.random() * 300) + 50,
+        totalDepartments: Math.floor(Math.random() * 15) + 5,
+        totalCourses: Math.floor(Math.random() * 100) + 50
+      },
+      recentActivities: [
+        { id: 1, title: "New faculty joined the Science department", time: "2 hours ago", icon: <FiBriefcase size={16} /> },
+        { id: 2, title: "Student project exhibition scheduled for next week", time: "5 hours ago", icon: <FiBookOpen size={16} /> },
+        { id: 3, title: "Deadline for mid-semester reports approaching", time: "1 day ago", icon: <FiFileText size={16} /> },
+      ],
+      performanceMetrics: {
+        attendance: parseFloat((Math.random() * 15 + 80).toFixed(2)),
+        passRate: parseFloat((Math.random() * 10 + 85).toFixed(2)),
+        researchOutput: Math.floor(Math.random() * 20) + 5
+      },
+      alerts: [
+        { id: 1, department: "Engineering", issue: "Low attendance in Thermodynamics class", severity: "medium" },
+        { id: 2, department: "Arts", issue: "Upcoming student strike protest", severity: "high" },
+      ]
     };
 
-    fetchDashboardData();
+    setTimeout(() => {
+      setDashboardData(fakeDashboardData);
+      setLoading(false);
+    }, 1500); // Simulate a 1.5-second loading time
   }, []);
 
   if (loading) {
@@ -172,8 +177,8 @@ const PrincipalDashboard = () => {
       >
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
           <div>
-            <h2 className="text-2xl font-semibold text-gray-800">Welcome, {user.name}</h2>
-            <p className="text-gray-600">Principal | {user.department}</p>
+            <h2 className="text-2xl font-semibold text-gray-800">Welcome, Principal</h2>
+            <p className="text-gray-600">Principal</p>
           </div>
           <div className="mt-4 md:mt-0 bg-red-50 p-3 rounded-lg">
             <p className="text-red-800 font-medium flex items-center">
@@ -535,7 +540,7 @@ const PrincipalDashboard = () => {
             View Map <FiChevronRight size={16} />
           </button>
         </div>
-        <div className="bg-gray-100 h-64 rounded-lg flex items-center justify-center">
+        {/* <div className="bg-gray-100 h-64 rounded-lg flex items-center justify-center">
           <div className="text-center">
             <FiMapPin size={32} className="mx-auto text-red-700 mb-2" />
             <p className="text-gray-700">Interactive campus map would be displayed here</p>
@@ -548,7 +553,7 @@ const PrincipalDashboard = () => {
               Open Full Map
             </motion.button>
           </div>
-        </div>
+        </div> */}
       </motion.section>
     </div>
   );

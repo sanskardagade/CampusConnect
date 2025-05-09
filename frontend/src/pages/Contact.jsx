@@ -26,11 +26,9 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Simulate form submission
-    setTimeout(() => {
-      setFormStatus({ submitted: true, error: false });
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 1000);
+    const { name, email, subject, message } = formData;
+    const gmailLink = `https://mail.google.com/mail/u/0/?view=cm&fs=1&to=sanskardagade@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)}`;
+    window.location.href = gmailLink;
   };
 
   return (
@@ -58,9 +56,9 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-lg">Address</h4>
-                    <p className="text-red-100">123 University Avenue</p>
-                    <p className="text-red-100">Tech Campus, Building 4</p>
-                    <p className="text-red-100">Edutown, ET 54321</p>
+                    <p className="text-red-100"> Dr.D.Y Patil Institute of Technology</p>
+                    <p className="text-red-100">Sant Tukaram Nagar,Pimpri-Chinchwad</p>
+                    <p className="text-red-100">411018</p>
                   </div>
                 </div>
                 
@@ -70,8 +68,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-lg">Phone</h4>
-                    <p className="text-red-100">+1 (555) 123-4567</p>
-                    <p className="text-red-100">+1 (555) 765-4321</p>
+                    <p className="text-red-100">+91 9960889772</p>
+                    <p className="text-red-100">+91 7588735942</p>
                   </div>
                 </div>
                 
@@ -81,8 +79,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-lg">Email</h4>
-                    <p className="text-red-100">support@campusconnect.edu</p>
-                    <p className="text-red-100">info@campusconnect.edu</p>
+                    <p className="text-red-100">atul.kathole@dypvp.edu.in</p>
+                    <p className="text-red-100">suvarna.patil@dypvp.edu.in</p>
                   </div>
                 </div>
                 
@@ -197,12 +195,21 @@ const Contact = () => {
         {/* Map Section */}
         <div className="mt-16">
           <div className="bg-white rounded-lg shadow-lg p-4 h-96">
+            
             {/* Replace with actual map implementation */}
             <div className="w-full h-full bg-gray-200 rounded-lg flex items-center justify-center">
-              <p className="text-gray-600 text-lg">Interactive Campus Map Goes Here</p>
-              {/* In a real implementation, you would use something like Google Maps,
-                  Leaflet, or another mapping library here */}
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3781.1243182635386!2d73.8160199!3d18.6230833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b860d63876d1%3A0x9bccd5081468bc36!2sDr.%20D.%20Y.%20Patil%20Institute%20of%20Technology!5e0!3m2!1sen!2sin!4v1715253789847!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0, borderRadius: "0.5rem" }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
+
+
           </div>
         </div>
       </div>

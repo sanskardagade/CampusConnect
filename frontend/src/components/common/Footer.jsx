@@ -20,7 +20,7 @@ const Footer = () => {
           <h3 className="text-xl font-semibold mb-3">Quick Links</h3>
           <ul className="space-y-2 text-sm">
             <li><Link to="/" className="hover:text-red-300">Home</Link></li>
-            <li><Link to="/dashboard/student" className="hover:text-red-300">Dashboard</Link></li>
+            {/* <li><Link to="/dashboard/student" className="hover:text-red-300">Dashboard</Link></li> */}
             <li><Link to="/features" className="hover:text-red-300">Features</Link></li>
             <li><Link to="/contact" className="hover:text-red-300">Contact Us</Link></li>
           </ul>
@@ -30,8 +30,8 @@ const Footer = () => {
         <div>
           <h3 className="text-xl font-semibold mb-3">Contact</h3>
           <ul className="text-sm text-gray-300 space-y-2">
-            <li>Email: support@campusconnect.com</li>
-            <li>Phone: +91 98765 43210</li>
+            <li>Email: atul.kathole@dypvp.edu.in</li>
+            <li>Email: suvarna.patil@dypvp.edu.in</li>
             <li>Address: DYPIT , Pimpri</li>
           </ul>
         </div>

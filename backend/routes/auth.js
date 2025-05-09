@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const Faculty = require('../models/Faculty');
 const Hod = require('../models/Hod');
+const PrincipalModel = require('../models/Principal');
 
 // Register a new user (class teacher, HOD, or principal)
 router.post('/register', async (req, res) => {
@@ -150,6 +151,34 @@ router.post('/login', async (req, res) => {
           name: hodRec.staffName,
           branch: hodRec.branch,
           role: 'hod'
+        }
+      });
+    }
+
+    // Principal login: authenticate against in-memory principal data
+    if (role === 'principal') {
+      const principalRec = await PrincipalModel.findByErp(username);
+      if (!principalRec) {
+        return res.status(401).json({ message: 'Invalid credentials' });
+      }
+      const isMatchPrincipal = PrincipalModel.comparePassword(password, principalRec.password);
+      if (!isMatchPrincipal) {
+        return res.status(401).json({ message: 'Invalid credentials' });
+      }
+      // Create JWT token for principal
+      const token = jwt.sign(
+        { id: principalRec.erpid, role: 'principal' },
+        process.env.JWT_SECRET,
+        { expiresIn: '24h' }
+      );
+      return res.json({
+        token,
+        user: {
+          id: principalRec.erpid,
+          erp: principalRec.erpid,
+          name: principalRec.name,
+          role: 'principal',
+          department: principalRec.department
         }
       });
     }

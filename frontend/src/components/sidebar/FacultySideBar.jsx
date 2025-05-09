@@ -6,6 +6,7 @@ import {
   AiFillDatabase,
   AiOutlinePlus,
   AiFillEye,
+  AiOutlineLogout,
   AiTwotoneFileExclamation,
 } from "react-icons/ai";
 import { useState } from "react";
@@ -19,11 +20,11 @@ import SidebarMenu from "./SideBarMenu";
       name: "Dashboard",
       icon: <FaHome />,
     },
-    {
-      path: "/faculty/take-attendance",
-      name: "Take Attendance",
-      icon: <FaUser />,
-    },
+    // {
+    //   path: "/faculty/take-attendance",
+    //   name: "Take Attendance",
+    //   icon: <FaUser />,
+    // },
     {
       path: "/faculty/divisions",
       name: "Divisions",
@@ -39,11 +40,11 @@ import SidebarMenu from "./SideBarMenu";
       name: "Student Stress Level",
       icon: <BiAnalyse />,
     },
-    {
-      path: "/faculty/location",
-      name: "View Student Location",
-      icon: <BiAnalyse />,
-    },
+    // {
+    //   path: "/faculty/location",
+    //   name: "View Student Location",
+    //   icon: <BiAnalyse />,
+    // },
     {
       path: "/faculty/faculty-profile",
       name: "Profile",
@@ -66,6 +67,7 @@ import SidebarMenu from "./SideBarMenu";
         },
       ],
     },
+    { path: "/", name: "Logout", icon: <AiOutlineLogout /> },
   ];
   
 

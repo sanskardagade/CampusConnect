@@ -10,7 +10,7 @@ const Navbar = () => {
       <div className="w-full px-2 sm:px-4 py-3 flex justify-between items-center">
         {/* Logo on Left */}
         <Link to="/" className="text-xl sm:text-2xl font-bold">
-          CampusConnect
+          DYPDPU
         </Link>
 
         {/* Right Side Menu - Desktop */}
@@ -25,7 +25,7 @@ const Navbar = () => {
           >
             Sign In
           </Link>
-          <FaUserCircle size={22} className="cursor-pointer" />
+          {/* <FaUserCircle size={22} className="cursor-pointer" /> */}
         </div>
 
         {/* Mobile Toggle */}

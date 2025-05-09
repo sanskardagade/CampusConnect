@@ -5,8 +5,10 @@ import {
   AiOutlineSetting,
   AiFillDatabase,
   AiOutlinePlus,
+  AiOutlineLogout,
   AiFillEye,
   AiTwotoneFileExclamation,
+  AiFillQqSquare,
 } from "react-icons/ai";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -19,10 +21,16 @@ import SidebarMenu from "./SideBarMenu";
       name: "Dashboard",
       icon: <FaHome />,
     },
+    // {
+    //   path: "/hod/view-student",
+    //   name: "View Student Attendance",
+    //   icon: <FaUser />,
+    // },
+  
     {
-      path: "/hod/view-student",
-      name: "View Student Attendance",
-      icon: <FaUser />,
+      path: "/hod/faculty-log",
+      name: "Faculty Logs",
+      icon: <AiFillQqSquare  />,
     },
     {
       path: "/hod/view-faculty",
@@ -33,16 +41,6 @@ import SidebarMenu from "./SideBarMenu";
       path: "/hod/view-stress-level",
       name: "View Student Stress Level",
       icon: <AiTwotoneFileExclamation />,
-    },
-    {
-        path: "/hod/view-student-location",
-        name: "View Student Location",
-        icon: <BiAnalyse />,
-      },
-    {
-      path: "/hod/department-statistics",
-      name: "Faculty Logger ",
-      icon: <BiAnalyse />,
     },
     
     {
@@ -60,12 +58,17 @@ import SidebarMenu from "./SideBarMenu";
           name: "Edit Profile",
           icon: <AiFillDatabase />,
         },
-        {
-          path: "/hod/hod-settings/change-password",
-          name: "Change Password",
-          icon: <AiFillEye />,
-        },
+          // {
+          //   path: "/hod/hod-settings/change-password",
+          //   name: "Change Password",
+          //   icon: <AiFillEye />,
+          // },
       ],
+    },
+    {
+      path:"/",
+      name:"Logout",
+      icon: <AiOutlineLogout />,
     },
   ];
   

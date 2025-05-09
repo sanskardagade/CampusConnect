@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import stressdata from "../Data/Stressdata";
 import {
   BarChart,
   Bar,
@@ -41,30 +42,18 @@ const StudentStressDashboard = () => {
   useEffect(() => {
     const fetchStressData = async () => {
       try {
-        setIsLoading(true);
-        const token = localStorage.getItem('token') || 'eedb1dd9-e34d-4df7-a341-b8389666dbde';
+        // Transform the data to match the component's expected property names
+        const transformedData = stressdata.map(student => ({
+          id: student.SR_NO,
+          name: student.NAME,
+          rollNo: student.ROLL_NO,
+          MorningSlot: student.MORNING_SLOT.toLowerCase(),
+          AfternoonSlot: student.AFTERNOON_SLOT.toLowerCase(),
+          score: student.DAILY_AVG_SCORE,
+          status: student.STRESS_STATUS
+        }));
         
-        const response = await fetch('http://localhost:5000/api/faculty/student-stress-level', {
-          method: 'GET',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json',
-          }
-        });
-
-        if (!response.ok) {
-          if (response.status === 401) {
-            throw new Error('Authentication failed. Please login again.');
-          }
-          throw new Error(`Failed to fetch stress data: ${response.status}`);
-        }
-
-        const data = await response.json();
-        if (!data.stressData) {
-          throw new Error('Invalid data format received from server');
-        }
-        
-        setStressData(data.stressData);
+        setStressData(transformedData);
         setError(null);
       } catch (error) {
         console.error('Error fetching stress data:', error);
@@ -95,7 +84,7 @@ const StudentStressDashboard = () => {
   }
 
   const filteredStudents = stressData.filter((student) =>
-    student.name.toLowerCase().includes(searchTerm.toLowerCase())
+    student.name?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const statusCounts = {
@@ -125,15 +114,6 @@ const StudentStressDashboard = () => {
       <h1 className="text-3xl font-bold mb-6 text-center text-red-400">
         Student Stress Management Dashboard
       </h1>
-
-      {/* <div className="mb-6 text-center">
-        <button
-          onClick={() => setIsDarkMode(!isDarkMode)}
-          className={`p-2 rounded ${isDarkMode ? "bg-red-700" : "bg-red-300"} text-white`}
-        >
-          Toggle {isDarkMode ? "Light" : "Dark"} Theme
-        </button>
-      </div> */}
 
       <div className="mb-6 text-center">
         <input
@@ -232,9 +212,10 @@ const StudentStressDashboard = () => {
                 outerRadius={80}
                 dataKey="value"
               >
-                {pieData.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={statusColors[index % statusColors.length]} />
-                ))}
+                {pieData.map((entry, index) => {
+                  const status = entry.name;
+                  return <Cell key={`cell-${index}`} fill={statusColors[status]} />;
+                })}
               </Pie>
             </PieChart>
           </ResponsiveContainer>

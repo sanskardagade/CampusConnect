@@ -6,6 +6,8 @@ import {
   AiFillDatabase,
   AiOutlinePlus,
   AiFillEye,
+  AiOutlineLogout,
+  AiFillBell,
   AiTwotoneFileExclamation,
 } from "react-icons/ai";
 import { useState } from "react";
@@ -19,31 +21,37 @@ import SidebarMenu from "./SideBarMenu";
       name: "Dashboard",
       icon: <FaHome />,
     },
-    {
-      path: "/principal/view-student",
-      name: "View Student Attendance",
-      icon: <FaUser />,
-    },
+    // {
+    //   path: "/principal/view-student",
+    //   name: "View Student Attendance",
+    //   icon: <FaUser />,
+    //},
     {
       path: "/principal/view-faculty",
       name: "View Faculty Attendance",
       icon: <AiOutlinePlus />,
     },
     {
+      path: "/principal/faculty-leave-approval",
+      name: "Faculty Leave Approval",
+      icon: <AiFillBell />,
+    
+    },
+    {
       path: "/principal/view-stress-level",
       name: "View Student Stress Level",
       icon: <AiTwotoneFileExclamation />,
     },
-    {
-        path: "/principal/view-student-location",
-        name: "View Student Location",
-        icon: <BiAnalyse />,
-      },
-    {
-      path: "/principal/department-statistics",
-      name: "View Department Statistics",
-      icon: <BiAnalyse />,
-    },
+    // {
+    //     path: "/principal/view-student-location",
+    //     name: "View Student Location",
+    //     icon: <BiAnalyse />,
+    //   },
+    // {
+    //   path: "/principal/department-statistics",
+    //   name: "View Department Statistics",
+    //   icon: <BiAnalyse />,
+    // },
     
     {
       path: "/principal/principal-profile",
@@ -67,6 +75,7 @@ import SidebarMenu from "./SideBarMenu";
         },
       ],
     },
+    { path: "/", name: "Logout", icon: <AiOutlineLogout /> },
   ];
   
 

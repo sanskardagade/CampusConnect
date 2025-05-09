@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../context/UserContext";
 import { FiLogIn, FiAlertCircle } from "react-icons/fi";
+import { motion } from "framer-motion";
+import { FaCheckCircle, FaChalkboardTeacher, FaUsers, FaCalendarCheck } from "react-icons/fa";
+import CollegeImg from "../assets/dit_sunset.jpeg"; // Your custom image for background
 import Navbar from "../components/common/Navbar";
 import Footer from "../components/common/Footer";
 
@@ -61,7 +64,7 @@ const SignInPage = () => {
         'student': '/student', 
         'faculty': '/faculty',
         'hod': '/hod',
-        'principal': '/principal/dashboard'
+        'principal': '/principal'
       };
 
       navigate(rolePath[data.user.role] || '/');
@@ -78,18 +81,59 @@ const SignInPage = () => {
       <Navbar />
       <div className="flex min-h-screen font-sans">
         {/* Left Section - Image + Heading */}
-        <div className="w-1/2 hidden lg:flex">
-          <div className="relative w-full h-screen">
-            <img
-              src="/src/assets/dit_frontgate.jpeg"
-              alt="College"
-              className="object-cover w-full h-full"
-            />
-            {/* <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-              <h1 className="text-white text-5xl font-bold">CampusConnect</h1>
-            </div> */}
+        <motion.div
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          className="relative md:w-1/2 h-[500px] md:h-auto"
+        >
+          {/* Background image */}
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${CollegeImg})` }}
+          ></div>
+
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-black/60"></div>
+
+          {/* Content */}
+          <div className="relative z-10 text-white p-10 h-full flex flex-col justify-center items-start">
+            <div className="bg-white bg-opacity-10 backdrop-blur-lg p-8 rounded-2xl shadow-xl max-w-sm mx-auto">
+              <h1 className="text-4xl font-extrabold mb-4">Welcome to CampusConnect</h1>
+              <p className="text-md text-gray-200 mb-6">
+                CampusConnect is your all-in-one platform for academic collaboration and campus life.
+              </p>
+
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <FaCalendarCheck className="text-green-400 text-xl" />
+                  <span>Real-time attendance & leave management</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <FaUsers className="text-blue-300 text-xl" />
+                  <span>Role-based dashboards & features</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <FaCheckCircle className="text-yellow-300 text-xl" />
+                  <span>Stress tracking and well-being</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <FaChalkboardTeacher className="text-pink-300 text-xl" />
+                  <span>Events, circulars & announcements</span>
+                </div>
+              </div>
+
+              {/* <button
+                onClick={() => navigate("/signin")}
+                className="mt-8 px-6 py-2 bg-white text-red-800 rounded-full hover:bg-gray-100 transition font-semibold"
+              >
+                Already have an account? Login
+              </button> */}
+            </div>
           </div>
-        </div>
+        </motion.div>
+
+        
 
         {/* Right Section - Login Form */}
         <div className="w-full lg:w-1/2 flex justify-center items-center p-10">
@@ -162,7 +206,7 @@ const SignInPage = () => {
               </a>
             </p>
 
-            <div className="text-center mt-4">
+            {/* <div className="text-center mt-4">
               <p>Don't have an account?</p>
               <a
                 href="/signup"
@@ -170,7 +214,7 @@ const SignInPage = () => {
               >
                 Sign Up
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
