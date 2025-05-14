@@ -56,8 +56,11 @@ const SignInPage = () => {
       // Store token and user data
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
-      localStorage.setItem("role", data.user.role);
-      updateUser(data.user);
+      // Augment the user with ERP staff ID for attendance dashboard
+      const userWithErp = { ...data.user, ErpStaffID: formData.username };
+      // Store updated user
+      updateUser(userWithErp);
+      localStorage.setItem("role", userWithErp.role);
 
       // Redirect based on role
       const rolePath = {

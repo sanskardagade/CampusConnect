@@ -26,10 +26,18 @@ import SidebarMenu from "./SideBarMenu";
     //   name: "View Student Attendance",
     //   icon: <FaUser />,
     //},
+
+    // {
+    //   path: "/principal/view-faculty",
+    //   name: "View Faculty Attendance",
+    //   icon: <AiOutlinePlus />,
+    // },
+
     {
-      path: "/principal/view-faculty",
-      name: "View Faculty Attendance",
+      path: "/principal/static-faculty-log",
+      name: "Static Faculty Attendance",
       icon: <AiOutlinePlus />,
+
     },
     {
       path: "/principal/faculty-leave-approval",

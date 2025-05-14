@@ -27,11 +27,18 @@ import SidebarMenu from "./SideBarMenu";
     //   icon: <FaUser />,
     // },
   
+    // {
+    //   path: "/hod/faculty-log",
+    //   name: "Faculty Logs",
+    //   icon: <AiFillQqSquare  />,
+    // },
+
     {
-      path: "/hod/faculty-log",
-      name: "Faculty Logs",
-      icon: <AiFillQqSquare  />,
+      path: "/hod/static-faculty-log",
+      name: "Static Faculty Attendance",
+      icon: <AiOutlinePlus />,
     },
+    
     {
       path: "/hod/view-faculty",
       name: "View Faculty Attendance",
@@ -42,6 +49,7 @@ import SidebarMenu from "./SideBarMenu";
       name: "View Student Stress Level",
       icon: <AiTwotoneFileExclamation />,
     },
+    
     
     {
       path: "/hod/hod-profile",

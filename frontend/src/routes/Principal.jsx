@@ -12,6 +12,7 @@ import PrincipalSettings from "../components/principal/PrincipalSettings";
 import PrincipalProfileEdit from "../components/principal/PrincipalProfileEdit";
 import PrincipalChangePassword from "../components/principal/PrincipalChangePassword";
 import LeaveApplication from "../components/principal/LeaveApplication";
+import StaticFacultyLog from "../components/hod/StaticFacultyLog";
 
 
 const Principal = () => {
@@ -29,6 +30,7 @@ const Principal = () => {
         <Route path="principal-settings/edit-profile" element={<PrincipalProfileEdit />} /> 
         <Route path="principal-settings/change-password" element={<PrincipalChangePassword />} />
         <Route path="faculty-leave-approval" element={<LeaveApplication />} />
+        <Route path="static-faculty-log" element={<StaticFacultyLog />} />
       </Routes>
     </PrincipalSideBar>
   );

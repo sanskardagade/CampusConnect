@@ -11,6 +11,7 @@ import FacultyProfile from "../components/faculty/FacultyProfile";
 import FacultySettings from "../components/faculty/FacultySettings";
 import FacultyProfileEdit from "../components/faculty/FacultyProfileEdit";
 import FacultyChangePassword from "../components/faculty/FacultyChangePassword";
+import LeaveApplication from "../components/faculty/LeaveApplication";
 
 const Faculty = () => {
   return (
@@ -26,6 +27,7 @@ const Faculty = () => {
         <Route path="faculty-settings" element={<FacultySettings />} />
         <Route path="faculty-settings/edit-profile" element={<FacultyProfileEdit />} />
         <Route path="faculty-settings/change-password" element={<FacultyChangePassword />} />
+        <Route path="leave-apply" element={<LeaveApplication/>}/>
       </Routes>
     </FacultySideBar>
   );

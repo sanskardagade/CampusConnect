@@ -8,6 +8,7 @@ import {
   AiFillEye,
   AiOutlineLogout,
   AiTwotoneFileExclamation,
+  AiFillContainer,
 } from "react-icons/ai";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -49,6 +50,11 @@ import SidebarMenu from "./SideBarMenu";
       path: "/faculty/faculty-profile",
       name: "Profile",
       icon: <FaUser />,
+    },
+    {
+      path: "/faculty/leave-apply",
+      name: "Leave Application",
+      icon: <AiFillContainer />,
     },
     {
       path: "/faculty/faculty-settings",

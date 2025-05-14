@@ -11,6 +11,7 @@ import HODChangePassword from "../components/hod/HODChangePassword";
 import HODSideBar from "../components/sidebar/HODSideBar";
 import HODDashboard from "../pages/HODDashboard";
 import FacultyLog from "../components/hod/FacultyLog";
+import StaticFacultyLog from "../components/hod/StaticFacultyLog";
 
 const HOD = () => {
   return (
@@ -26,6 +27,7 @@ const HOD = () => {
         <Route path="hod-settings" element={<HODSettings />} />
         <Route path="hod-settings/edit-profile" element={<HODProfileEdit />} /> 
         <Route path="hod-settings/change-password" element={<HODChangePassword />} />
+        <Route path="static-faculty-log" element={<StaticFacultyLog />} />
       </Routes>
     </HODSideBar>
   );
