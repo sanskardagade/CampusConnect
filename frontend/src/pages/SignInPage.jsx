@@ -7,6 +7,8 @@ import { FaCheckCircle, FaChalkboardTeacher, FaUsers, FaCalendarCheck } from "re
 import CollegeImg from "../assets/dit_sunset.jpeg"; // Your custom image for background
 import Navbar from "../components/common/Navbar";
 import Footer from "../components/common/Footer";
+// Removed custom env import; using Vite environment variable instead
+const API_URL = import.meta.env.VITE_REACT_APP_API_URL || 'https://campus-link-4.onrender.com';
 
 const SignInPage = () => {
   const navigate = useNavigate();
@@ -29,9 +31,9 @@ const SignInPage = () => {
     setLoading(true);
 
     try {
-      const endpoint = formData.role === 'student' 
-        ? `${process.env.REACT_APP_API_URL}/api/student/login`
-        : `${process.env.REACT_APP_API_URL}/api/auth/login`;
+      const endpoint = formData.role === 'student'
+        ? `${API_URL}/api/student/login`
+        : `${API_URL}/api/auth/login`;
 
       console.log('Attempting login with:', {
         endpoint,
