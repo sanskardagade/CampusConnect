@@ -11,7 +11,21 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors());
+const allowedOrigins = [
+  'https://campus-link-hieg.vercel.app',
+  'https://campusconnect07.netlify.app'
+];
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error(`CORS policy does not allow access from origin ${origin}`));
+    }
+  },
+  credentials: true
+}));
 app.use(express.json());
 
 // Import routes
