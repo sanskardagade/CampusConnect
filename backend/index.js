@@ -2,7 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const db = require('./config/db');
-const fb = require('./config/firebaseAdmin.js');
+// Commenting out Firebase Admin import as it's not needed
+// const fb = require('./config/firebaseAdmin.js');
 
 // Load environment variables
 dotenv.config();
@@ -23,18 +24,18 @@ app.use('/api/auth', authRoutes);
 app.use('/api/student', studentRoutes);
 app.use('/api/faculty', facultyRoutes);
 
-// Firebase admin route
-app.get('/api/hod/divisions', async (req, res) => {
-  try {
-    const snapshot = await fb.ref("faculty_log").once("value");
-    const data = snapshot.val();
-    console.log("Successfully fetched faculty logs:", JSON.stringify(data, null, 2));
-    res.json(data || []);
-  } catch (error) {
-    console.error("Detailed error in /divisions route:", error);
-    res.status(500).json({ message: "Error fetching all faculty logs" });
-  }
-});
+// Comment out Firebase admin route since it's not needed
+// app.get('/api/hod/divisions', async (req, res) => {
+//   try {
+//     const snapshot = await fb.ref("faculty_log").once("value");
+//     const data = snapshot.val();
+//     console.log("Successfully fetched faculty logs:", JSON.stringify(data, null, 2));
+//     res.json(data || []);
+//   } catch (error) {
+//     console.error("Detailed error in /divisions route:", error);
+//     res.status(500).json({ message: "Error fetching all faculty logs" });
+//   }
+// });
 
 // Error handling middleware
 app.use((err, req, res, next) => {
