@@ -30,8 +30,8 @@ const SignInPage = () => {
 
     try {
       const endpoint = formData.role === 'student' 
-        ? "http://localhost:5000/api/student/login"
-        : "http://localhost:5000/api/auth/login";
+        ? `${process.env.REACT_APP_API_URL}/api/student/login`
+        : `${process.env.REACT_APP_API_URL}/api/auth/login`;
 
       console.log('Attempting login with:', {
         endpoint,
