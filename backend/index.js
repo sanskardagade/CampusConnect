@@ -12,7 +12,6 @@ const app = express();
 
 // Middleware
 const allowedOrigins = [
-  'https://campus-link-hieg.vercel.app',
   'https://campusconnect07.netlify.app'
 ];
 // Custom CORS middleware
@@ -65,12 +64,12 @@ app.use((err, req, res, next) => {
   try {
     await db.getConnection();
     console.log('✅ Connected to MySQL');
-    const PORT = process.env.PORT || 5000;
-    app.listen(PORT, () => {
-      console.log(`Server is running on port ${PORT}`);
-    });
   } catch (err) {
     console.error('MySQL connection error:', err);
-    process.exit(1);
+    console.warn('Continuing startup without database connection (CORS testing)');
   }
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
 })();
